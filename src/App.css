@@ -1,0 +1,75 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@theme {
+  --font-family-pop: "Poppins", sans-serif;
+  --color-main-pink: #ff8f9c;
+  --color-main-gray: #787878;
+  --color-main-black: #212121;
+}
+* {
+  @apply font-family-pop select-none;
+}
+html {
+  scroll-behavior: smooth;
+}
+::-webkit-scrollbar {
+  @apply w-[7px] h-[7px];
+}
+::-webkit-scrollbar-thumb {
+  @apply rounded-[10px] bg-gray-400/80;
+}
+
+.category-bar {
+  > div > p {
+    @apply font-extrabold uppercase cursor-pointer text-[10px] tracking-widest duration-300 hover:text-main-pink relative pb-2 text-center mb-1;
+    &::before {
+      content: "";
+      @apply w-0 h-1 bg-main-pink absolute top-full left-0 duration-300;
+    }
+    &:hover::before {
+      @apply w-full;
+    }
+  }
+  > div:nth-of-type(2) > p:hover + div {
+    @apply grid translate-y-0;
+  }
+  > div:nth-of-type(2) > p + div:hover {
+    @apply grid;
+  }
+  > div:nth-of-type(3) > p:hover + div {
+    @apply block;
+  }
+  > div:nth-of-type(3) > p + div:hover {
+    @apply block;
+  }
+  > div:nth-of-type(4) > p:hover + div {
+    @apply block;
+  }
+  > div:nth-of-type(4) > p + div:hover {
+    @apply block;
+  }
+  > div:nth-of-type(5) > p:hover + div {
+    @apply block;
+  }
+  > div:nth-of-type(5) > p + div:hover {
+    @apply block;
+  }
+  > div:nth-of-type(6) > p:hover + div {
+    @apply block;
+  }
+  > div:nth-of-type(6) > p + div:hover {
+    @apply block;
+  }
+}
+
+.show-item + div {
+  @apply border-t-[1px] border-black/25 mb-5 pt-2 h-auto opacity-100;
+}
+.product-card {
+  &:hover > .product-image > img {
+    @apply scale-115;
+  }
+  &:hover > .product-features {
+    @apply right-0;
+  }
+}
