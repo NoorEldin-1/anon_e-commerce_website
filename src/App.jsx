@@ -1260,7 +1260,7 @@ const SectionOne = () => {
           element.currentTarget.children[0].children[0].src = e.img1;
         }}
         key={i}
-        className="product-card border-[1px] border-black/25 rounded-sm p-4 shadow-md cursor-pointer relative overflow-hidden"
+        className="product-card border-[1px] border-black/25 rounded-sm p-4 cursor-pointer relative overflow-hidden"
       >
         <div className="product-image overflow-hidden mb-3">
           <img
@@ -1312,7 +1312,7 @@ const SectionOne = () => {
     <div className="container mx-auto px-1.5 my-10 grid md:grid-cols-4 md:gap-5 ">
       <div className="max-md:hidden md:col-span-1 relative">
         <div className="sticky top-5">
-          <div className="p-3 border-[1px] border-black/25 rounded-sm overflow-hidden shadow-md">
+          <div className="p-3 border-[1px] border-black/25 rounded-sm overflow-hidden">
             <h1 className="font-bold text-sm uppercase mb-5">categories</h1>
             {sideOneData[0]}
             <div className="duration-300 h-0 overflow-hidden opacity-0">
@@ -1436,7 +1436,7 @@ const SectionOne = () => {
               </div>
             </div>
           </div>
-          <div className="p-3 border-[1px] border-black/25 rounded-sm mt-5 shadow-xl">
+          <div className="p-3 border-[1px] border-black/25 rounded-sm mt-5">
             <h1 className="font-bold text-sm uppercase mb-5">best sellers</h1>
             {sideTwoData}
           </div>
@@ -2574,13 +2574,17 @@ const Modal = () => {
 };
 const ScrollToTop = () => {
   const [isScrollToTop, setIsScrollToTop] = useState(false);
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 100) {
-      setIsScrollToTop(true);
-    } else {
-      setIsScrollToTop(false);
-    }
-  });
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setIsScrollToTop(true);
+      } else {
+        setIsScrollToTop(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
     <>
       <AnimatePresence>
